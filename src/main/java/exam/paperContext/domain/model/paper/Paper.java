@@ -1,7 +1,7 @@
 package exam.paperContext.domain.model.paper;
 
-import exam.paperContext.shared.Entity;
-import exam.paperContext.shared.ValueObject;
+import exam.shared.Entity;
+import exam.shared.ValueObject;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,10 +13,10 @@ import java.util.List;
 
 @EqualsAndHashCode(of = {"paperId"})
 public class Paper implements Entity<Paper> {
-    private PaperId paperId;
+    private final PaperId paperId;
     private List<BlankQuiz> blankQuizzes;
     private String teacherId;
-    private LocalDateTime createTime;
+    private final LocalDateTime createTime;
 
     private Paper(PaperId paperId, String teacherId, List<BlankQuiz> blankQuizzes) {
         this.paperId = paperId;
@@ -71,8 +71,8 @@ public class Paper implements Entity<Paper> {
     @Getter
     @AllArgsConstructor
     public static class BlankQuiz implements ValueObject<BlankQuiz> {
-        private String quizId;
-        private int score;
+        private final String quizId;
+        private final int score;
 
         @Override
         public boolean sameValueAs(BlankQuiz other) {
