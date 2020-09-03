@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
@@ -12,8 +13,7 @@ public class CourseId implements ValueObject<CourseId> {
     private final String id;
 
     public static CourseId nextId() {
-        //TODO Generate ID
-        return null;
+        return new CourseId(UUID.randomUUID().toString());
     }
 
     @Override
